@@ -1,0 +1,32 @@
+.main-nav {
+  padding: var(--gap4) 0;
+  
+  ul  {
+    display: flex;
+    gap: var(--gap2);
+    list-style: none;
+    padding: 0;
+  }
+
+  &__link {
+    border: 1px solid var(--main-color-300);
+    border-radius: 100px;
+    color: var(--gray-900);
+    display: block;
+    padding: var(--gap1) var(--gap4);
+    min-width: 12rem;
+    text-decoration: none;
+    text-align: center;
+    transition: all 0.1s ease;
+
+    &:hover {
+      background: var(--main-color-400);
+      border-color: var(--main-color-400);
+      color: white;
+
+      &.is--active {
+        backgrond: var(--man-color-500);
+      }
+    }
+  }
+}

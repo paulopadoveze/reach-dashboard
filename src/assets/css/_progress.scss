@@ -1,0 +1,24 @@
+.progress {
+	--height: 18px;
+	border-radius: 100px;
+	height: var(--height);
+	background: var(--gray-200);
+	width: 100%;
+	overflow: hidden;
+
+	&__bar {
+		background: linear-gradient(to right, #003CFF, #8F00FF);
+		height: 100%;
+		text-align: right;
+		line-height: var(--height);
+	}
+
+	&__value{
+		color: #fff;
+		font-size: var(--small);
+		font-weight: 700;
+		display: inline-block;
+		vertical-align: top;
+		padding-right: var(--gap1);
+	}
+}

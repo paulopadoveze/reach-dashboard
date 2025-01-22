@@ -1,0 +1,125 @@
+.creator__list {
+	padding: var(--gap6) 0;
+	list-style: none;
+	display: flex;
+	flex-wrap: wrap;
+	gap: var(--gap4);
+}
+
+.creator-card {
+	--status-color: var(--gray-300);
+	--status-label-bg: #f8f8f8;
+	box-shadow: 0 4px 25px #DDDFE1;
+	width: 242px;
+	border-radius: var(--border-radius-m);
+
+	&__image {
+		border: 4px solid var(--status-color);
+		border-radius: 1000px;
+		width: 80px;
+	}
+
+	&__content {
+		padding: var(--gap2) var(--gap6) var(--gap6);
+	}
+
+	&__header {
+		background: linear-gradient(to bottom, #E7EBF1 calc(50% + var(--gap3)), transparent calc(50% + var(--gap3)));
+		padding: var(--gap6) var(--gap6) 0;
+		border-radius: var(--border-radius-m) var(--border-radius-m)  0 0;
+	}
+
+	&.draft-waiting {
+		--status-color: #FFD373;
+	}
+
+	&.draft-posted {
+		--status-color: #8AEA92;
+	}
+
+	&.draft-approved {
+		--status-color: #46B8FF;
+	}
+
+	&.offer-approved {
+		--status-color: #B5D4B8;
+	}
+
+	&.offer-sent {
+		--status-color: var(--gray-100);
+	}
+
+	&.posted {
+		--status-color: #8F00FF;
+		--status-label-bg: #F6EAFF;
+	}
+
+	&.cancelled {
+		--status-color: #FB1E26;
+		--status-label-bg: #FFEDF3;
+	}
+}
+
+.creator-rates {
+	list-style-type: none;
+	line-height: 1.2;
+	padding: 0;
+}
+
+.creator__username {
+	font-size: var(--h6);
+}
+
+.creator__name {
+	color: var(--gray-600);
+	font-size: var(--h6);
+	font-weight: 300;
+	margin-bottom: var(--gap2);
+}
+
+.creator-rates__item {
+	.value {
+		font-weight: 700;
+		font-size: var(--p);
+		padding-right: var(--gap1);
+	}
+
+	.label {
+		color: var(--gray-600);
+		font-size: var(--small);
+		font-weight: 300;
+	}
+}
+
+.creator-rate {
+	font-size: var(--h5);
+	font-weight: 700;
+	padding: var(--gap2) 0;
+}
+
+.creator-status {
+	text-align: center;
+	padding: var(--gap4) var(--gap2) 0;
+
+	.status-label {
+		align-items: center;
+		display: flex;
+		background: var(--status-label-bg);
+		border-radius: 100px;
+		font-size: var(--h6);
+		font-weight: 200;
+		padding: var(--gap1) var(--gap2);
+		justify-content: center;
+		position: relative;
+
+		&:before {
+			background: var(--status-color);
+			content: '';
+			width: 12px;
+			height: 12px;
+			display: block;
+			border-radius: 12px;
+			margin-right: var(--gap1);
+		}
+	}
+}

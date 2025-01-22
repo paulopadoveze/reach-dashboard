@@ -1,0 +1,128 @@
+@import url('https://fonts.googleapis.com/css2?family=Commissioner:wght@100..900&family=Hedvig+Letters+Sans&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+body {
+    font-family: 'Inter', sans-serif;
+    color: var(--gray-900);
+}
+
+p {
+    font-size: 0.8rem;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Inter', sans-serif;
+}
+
+.heading-1 { font-size: var(--h1)}
+.heading-2 { font-size: var(--h2)}
+.heading-3 { font-size: var(--h3)}
+.heading-4 { font-size: var(--h4)}
+.heading-5 { font-size: var(--h5)}
+.heading-6 { font-size: var(--h6)}
+
+.container {
+  padding-left: 3.2rem;
+  padding-right: 3.2rem;
+}
+
+.main-header {
+  background: var(--main-header-bg);
+  height: 50px;
+
+  &__logo {
+    
+  }
+}
+
+.blade {
+  padding: var(--gap6) 0;
+}
+
+.section__title,
+.section__subtitle {
+  color: var(--gray-800);
+  margin-bottom: var(--gap2);
+}
+
+.heading__badge {
+  background: var(--gray-100);
+  border-radius: var(--border-radius-p);
+  font-size: 0.5em;
+  padding: 0.3em 0.5em;
+  min-width: 2.4em;
+  display: inline-block;
+  vertical-align: middle;
+  text-align: center;
+
+  &.-danger {
+    background: #FFD0DF;
+    color: #FF0050;
+  }
+}
+
+.section__controls {
+  text-align: right;
+
+  > ul {
+    display: flex;
+    list-style-type: none;
+  }
+  
+}
+
+.p-menu-start {
+  min-width: 12rem;
+  background: #f4f4f4;
+  border-radius: var(--border-radius-m);
+  box-shadow: 0px 30px 30px -15px #CED4DE;
+  padding: var(--gap4);
+}
+
+.p-tablist-content .p-tablist-tab-list {
+  border-style: inherit;
+}
+.switch {
+  position: relative;
+  display: flex;
+  align-items: center;
+    cursor: pointer;
+
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  width: 30px;
+  height: 10px;
+  cursor: pointer;
+  position: relative;
+  background-color: var(--gray-200);
+  border-radius: 100px;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+  display: inline-block;
+  margin-right: var(--gap1);
+
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 14px;
+  width: 14px;
+  left: 0;
+  top: -2px;
+  border-radius: 100px;
+  background-color: var(--gray-300);
+  -webkit-transition: 0.2s;
+  transition: 0.4s;
+}
+
+.switch:has(input:checked) .slider:before {
+  background-color: var(--main-color-500);
+  left: 16px;
+}

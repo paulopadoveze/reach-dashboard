@@ -1,0 +1,42 @@
+@import '/reset.scss'
+
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+:root {
+  --gap-base: 4px;
+  --gap2: 8px;
+  --gap3: 12px;
+  --gap4: 16px;
+  --gap5: 20px;
+  --gap6: 24px;
+  --gap7: 28px;
+  --gap8: 32px;
+  --gap9: 36px;
+  --gap10: 40px;
+  --gap11: 44px;
+  --gap12: 48px;
+  --gap13: 52px;
+  --gap14: 56px;
+  --gap15: 60px;
+  --gap16: 64px;
+}
+
+:root {
+  --main-header-bg: #000;
+}
+
+.main-header {
+  background: var(--main-header-bg);
+  &__logo {
+    
+  }
+}
+
