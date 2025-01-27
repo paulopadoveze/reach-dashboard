@@ -7,7 +7,7 @@
 	overflow: hidden;
 
 	&__bar {
-		background: linear-gradient(to right, #003CFF, #8F00FF);
+		background: linear-gradient(to right, var(--progress-bar-begin-bg), var(--progress-bar-end-bg));
 		height: 100%;
 		text-align: right;
 		line-height: var(--height);

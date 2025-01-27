@@ -613,7 +613,7 @@ const store = createStore({
     creators:[
         {
           userName: 'piperrockelle',
-          displayName: 'Howard Holo',
+          displayName: 'Piper Rockelle',
           followers: 12983129,
           averageViews:182382,
           engagementRate: '8.4%',
@@ -622,8 +622,8 @@ const store = createStore({
           statusClass: 'draft-waiting'
         },
         {
-          userName: 'asalpersian',
-          displayName: 'Howard Holo',
+          userName: 'gavsocrazy',
+          displayName: 'Gav',
           followers: 190201,
           averageViews:34364,
           engagementRate: '19.7%',
@@ -642,8 +642,8 @@ const store = createStore({
           statusClass: 'draft-approved'
         },
         {
-          userName: 'influencerron',
-          displayName: 'Howard Holo',
+          userName: 'pejaandmom',
+          displayName: 'Peja & Mom',
           followers: 190201,
           averageViews:34364,
           engagementRate: '19.7%',
@@ -652,8 +652,8 @@ const store = createStore({
           statusClass: 'offer-approved'
         },
         {
-          userName: 'Noa',
-          displayName: 'Howard Holo',
+          userName: 'javierramireze1',
+          displayName: 'Javier Ramirez',
           followers: 190201,
           averageViews:34364,
           engagementRate: '19.7%',
@@ -662,8 +662,8 @@ const store = createStore({
           statusClass: 'offer-sent'
         },
         {
-          userName: 'Noa',
-          displayName: 'Howard Holo',
+          userName: 'unusual_britney',
+          displayName: 'Unusual Britney',
           followers: 190201,
           averageViews:34364,
           engagementRate: '19.7%',
@@ -672,8 +672,8 @@ const store = createStore({
           statusClass: 'posted'
         },
         {
-          userName: 'Noa',
-          displayName: 'Howard Holo',
+          userName: 'iamkatrinalashay',
+          displayName: 'Katrina Lashay',
           followers: 190201,
           averageViews:34364,
           engagementRate: '19.7%',

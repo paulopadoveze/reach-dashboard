@@ -85,7 +85,7 @@
       
     <nav class="main-nav">
       <ul>
-        <li><a class="main-nav__link" href="">Overview</a></li>
+        <li><a class="main-nav__link is--active" href="">Overview</a></li>
         <li><a class="main-nav__link" href="">Pending reviews</a></li>
         <li><a class="main-nav__link" href="">Delivered posts</a></li>
         <li><a class="main-nav__link" href="">Creators</a></li>
