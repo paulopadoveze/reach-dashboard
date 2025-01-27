@@ -81,21 +81,65 @@
 
     </header>
   </div>
+  <header class="main-nav__header">
+    <div class="container">
+      <nav class="main-nav">
+         <ul>
+            <li>
+              <a 
+                class="main-nav__link" 
+                :class="{ 'is--active': activeSection === 'overview' }" 
+                href="#overview"
+              >Overview</a>
+            </li>
+            <li>
+              <a 
+                class="main-nav__link" 
+                :class="{ 'is--active': activeSection === 'pendingReview' }" 
+                href="#pendingReview"
+              >Pending reviews
+              <span class="badge" v-if="currentPendingPosts > 0">{{currentPendingPosts}}</span>
+            </a>
+            </li>
+            <li>
+              <a 
+                class="main-nav__link" 
+                :class="{ 'is--active': activeSection === 'deliveredPosts' }" 
+                href="#deliveredPosts"
+              >Delivered posts</a>
+            </li>
+            <li>
+              <a 
+                class="main-nav__link" 
+                :class="{ 'is--active': activeSection === 'creatorList' }" 
+                href="#creatorList"
+              >Creators</a>
+            </li>
+          </ul>
+        </nav>
+    </div>
+  </header>
   <div class="container">
       
-    <nav class="main-nav">
-      <ul>
-        <li><a class="main-nav__link is--active" href="">Overview</a></li>
-        <li><a class="main-nav__link" href="">Pending reviews</a></li>
-        <li><a class="main-nav__link" href="">Delivered posts</a></li>
-        <li><a class="main-nav__link" href="">Creators</a></li>
-      </ul>
-    </nav>
+    
 
-    <Overview />
-    <PendingReviewsList />
-    <DeliveredPosts />
-    <CreatorList />
+    <section class="blade" id="overview" data-section="overview">
+      <Overview />
+    </section>
+
+    <section class="blade" id="pendingReview" data-section="pendingReview" >
+      <PendingReviewsList @update-posts-count="handlePostsCount"/>
+    </section>
+
+    <section class="blade" id="deliveredPosts" data-section="deliveredPosts">
+      <DeliveredPosts />
+    </section>
+
+    <section class="blade" id="creatorList" data-section="creatorList"> 
+      <CreatorList />
+    </section>
+    
+    
 
   </div>
 
@@ -121,6 +165,9 @@
   const dropdownMenu = ref(false);
   const menu = ref();
   const popoverRef = ref();
+  const activeSection = ref('overview');
+
+  const currentPendingPosts = ref(0);
 
   // Store Computed Values
   const store = useStore();
@@ -165,6 +212,32 @@
     }).format(num);
   };
 
+  const scrollSpy = () => {
+    const sections = document.querySelectorAll('.blade');
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            activeSection.value = entry.target.dataset.section;
+            console.log(activeSection.value);
+          }
+        });
+      },
+      {
+        root: null, // viewport
+        rootMargin: '0px',
+        threshold: 0.6, // Trigger when 60% of the section is visible
+      }
+    );
+
+    sections.forEach((section) => observer.observe(section));
+
+    // Cleanup observer
+    return () => {
+      observer.disconnect();
+    };
+  };
+
 
   // Ripple Effect
   const vRipple = Ripple;
@@ -173,6 +246,17 @@
   const toggle = (event) => {
     menu.value.toggle(event);
   };
+
+  const handlePostsCount = (count) => {
+      currentPendingPosts.value = count;
+
+      console.log(count)
+  };
+
+  onMounted(()=> {
+    const cleanupObserver = scrollSpy();
+
+  })
 
 
 </script>

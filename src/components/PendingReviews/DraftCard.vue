@@ -35,8 +35,6 @@
 
 <script setup>
   import { ref } from 'vue';
-  import Button from 'primevue/Button';
-  import Dialog from 'primevue/Dialog';
 
   const visible = ref(false);
   const comment = ref('');

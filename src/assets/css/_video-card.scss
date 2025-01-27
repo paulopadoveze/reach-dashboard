@@ -20,6 +20,7 @@
 	}
 
 	&__thumb {
+		background: var(--gray-100);
 		border-radius: var(--border-radius-m);
 		overflow: hidden;
 		height: 12rem;

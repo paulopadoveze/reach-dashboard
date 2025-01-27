@@ -1,6 +1,4 @@
 <template>
-<section class="blade ">
-
   <h2 class="heading-3 section__title">Overview</h2>
   <h3 class="heading-5 section__subtitle">Campaign performance</h3>
 
@@ -95,7 +93,6 @@
           <span class="percentage">daily</span>
       </div>
     </div>
-  </section>
   </section>
 </template>
 

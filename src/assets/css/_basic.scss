@@ -5,6 +5,10 @@ body {
     color: var(--gray-900);
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 p {
     font-size: 0.8rem;
 }

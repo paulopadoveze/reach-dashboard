@@ -13,8 +13,9 @@
     border-radius: 100px;
     color: var(--gray-900);
     display: block;
-    padding: var(--gap1) var(--gap4);
-    min-width: 12rem;
+    padding: var(--gap1) var(--gap5);
+    position: relative;
+    min-width: 13rem;
     text-decoration: none;
     text-align: center;
     transition: all 0.1s ease;
@@ -30,5 +31,24 @@
       color: white;
       border-color: var(--main-color-500);
     }
+  }
+
+  &__header {
+    position: sticky;
+    top: 0;
+    background: white;
+    z-index: 4;
+  }
+
+  .badge {
+    color: white;
+    background: #FF0050;
+    font-size: var(--small);
+    font-weight: 700;
+    position: absolute;
+    right: var(--gap2);
+    bottom: -8px;
+    padding: 2px var(--gap2);
+    border-radius: 100px;
   }
 }

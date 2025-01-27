@@ -1,5 +1,4 @@
 <template>
-
   <h2 class="heading-2">Creators <span class="heading__badge">{{creatorList.length}}</span></h2>
 
   <ul class="creator__list" v-if="creatorsDisplayed.length > 0">
@@ -12,7 +11,6 @@
   <div class="controls-right">
     <button class="btn btn-primary"  v-if="creatorsDisplayed.length !== creatorList.length" @click="showMore">Show More</button>
   </div>
-
 
 </template>
 
