@@ -38,6 +38,16 @@ h1, h2, h3, h4, h5, h6 {
   padding: var(--gap6) 0;
 }
 
+.header-with-controls {
+  display: flex;
+
+  > :first-child {
+    flex-grow: 2;
+  }
+}
+
+
+
 .section__title,
 .section__subtitle {
   color: var(--gray-800);
@@ -125,4 +135,81 @@ h1, h2, h3, h4, h5, h6 {
 .switch:has(input:checked) .slider:before {
   background-color: var(--main-color-500);
   left: 16px;
+}
+
+.btn {
+  --color: var(--negative);
+  --bg: var(--main-color-500);
+  --bg-hover: (var--main-color-400);
+
+  background: var(--bg);
+  color: var(--color);
+  padding: var(--gap2) var(--gap4);
+  border-radius: var(--border-radius-p);
+  border: 0;
+  cursor: pointer;
+  transition: all 0.1s ease;
+
+  &:hover {
+    background: var(--bg-hover);
+
+  }
+
+  &.btn-primary {
+    --bg: var(--main-color-500);
+    --bg-hover: var(--main-color-400);
+    --color: var(--negative);
+  }
+
+  &.btn-secondary {
+    --bg: var(--main-color-300);
+    --bg-hover: var(--main-color-200);
+  }
+
+  svg {
+    fill: var(--color);
+  }
+}
+
+.controls-right {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.btn-group {
+  display: flex;
+  padding-bottom: var(--gap4);
+  margin-left: auto;
+
+  > :first-child {
+    border-radius: var(--border-radius-p) 0 0 var(--border-radius-p);
+  }
+
+  > :last-child {
+    border-radius: 0 var(--border-radius-p) var(--border-radius-p) 0; 
+  }
+
+  >.btn:not(.is--active) {
+    background: var(--main-color-200);
+    color: var(--color);
+
+    &:hover {
+      background: var(--bg-hover);
+
+      svg {
+        fill: var(--color);
+      }
+    }
+
+    svg {
+      fill: var(--bg);
+    }
+  }
+}
+
+/* Helpers
+---*/
+
+.u-align-right {
+  align-content: right;
 }

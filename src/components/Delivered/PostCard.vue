@@ -16,33 +16,30 @@
     </ul>
   </a>
 
-  <!-- Modal -->
-  <CModal v-model:visible="modalVisible" size="lg"  @close="() => { modalVisible = false }">
-    <CModalHeader>
-      <CButton close aria-label="Close" @click="closeModal">
-        <svg data-v-ea55b58c="" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" data-v-44dd5d02=""><path d="M5.05762 5.0575L18.9426 18.9425" stroke="#FFF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path><path d="M18.9424 5.0575L5.05738 18.9425" stroke="#FFF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path></svg>
-      </CButton>
-    </CModalHeader>
-    <CModalBody class="video-modal__container">
-      <!-- Video Section -->
+
+  <Dialog v-model:visible="modalVisible"  pt:root:class="video-modal" >
+    <template #header></template>
+    <div class="modal-video__container">
       <div class="modal-video">
         <video :src="postData.video.playbackUrl" controls></video>
       </div>
       <!-- Info Section -->
       <div class="modal-info">
-        <h5 class="heading-5">{{ postData.author.username }}</h5>
-        <p class="timestamp">Posted at {{formatTimestamp(postData.postTime)}}</p>
-        <p><strong>Engagement:</strong> {{ engagementCalculator(postData.stats) }}%</p>
-        <p><strong>Views:</strong> {{ formatNumber(postData.stats.viewCount) }}</p>
-        <p><strong>Likes:</strong> {{ formatNumber(postData.stats.likeCount) }}</p>
-        <p><strong>Comments:</strong> {{ formatNumber(postData.stats.commentCount) }}</p>
-        <p><strong>Shares:</strong> {{ formatNumber(postData.stats.shareCount) }}</p>
+        <div class="modal-info">
+          <h5 class="heading-5">{{ postData.author.username }}</h5>
+          <p class="timestamp">Posted at {{formatTimestamp(postData.postTime)}}</p>
+          <p><strong>Engagement:</strong> {{ engagementCalculator(postData.stats) }}%</p>
+          <p><strong>Views:</strong> {{ formatNumber(postData.stats.viewCount) }}</p>
+          <p><strong>Likes:</strong> {{ formatNumber(postData.stats.likeCount) }}</p>
+          <p><strong>Comments:</strong> {{ formatNumber(postData.stats.commentCount) }}</p>
+          <p><strong>Shares:</strong> {{ formatNumber(postData.stats.shareCount) }}</p>
+        </div>
       </div>
-    </CModalBody>
-    <CModalFooter>
-      <CButton color="secondary" @click="closeModal">Close</CButton>
-    </CModalFooter>
-  </CModal>
+    </div>
+    <template #footer>
+        <Button label="Ok" class="btn btn-primary"  @click="visible = false" autofocus />
+    </template>
+  </Dialog>
 
 
 </template>

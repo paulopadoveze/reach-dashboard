@@ -1,8 +1,10 @@
 .creator__list {
+	--minSize: 242px;
 	padding: var(--gap6) 0;
 	list-style: none;
-	display: flex;
-	flex-wrap: wrap;
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(var(--minSize), 1fr));
+
 	gap: var(--gap4);
 }
 
@@ -10,7 +12,6 @@
 	--status-color: var(--gray-300);
 	--status-label-bg: #f8f8f8;
 	box-shadow: 0 4px 25px #DDDFE1;
-	width: 242px;
 	border-radius: var(--border-radius-m);
 
 	&__image {

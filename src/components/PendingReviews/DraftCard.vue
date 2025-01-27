@@ -1,5 +1,5 @@
 <template>
-  <a href="" class="video-card -small" @click.prevent="openModal">
+  <a href="" class="video-card -small"@click.prevent="visible = true" >
     <div class="video-card__thumb">
       <video :src="draftData.playbackUrl"></video>
     </div>
@@ -7,41 +7,38 @@
     <span class="video-card__timestamp"> {{ formatTimestamp(draftData.draftTime) }}</span>
   </a>
 
-  <CModal v-model:visible="modalVisible" size="lg"  @close="() => { modalVisible = false }">
-    <CModalHeader>
-      <CButton close aria-label="Close" @click="closeModal">
-        <svg data-v-ea55b58c="" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" data-v-44dd5d02=""><path d="M5.05762 5.0575L18.9426 18.9425" stroke="#FFF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path><path d="M18.9424 5.0575L5.05738 18.9425" stroke="#FFF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path></svg>
-      </CButton>
-    </CModalHeader>
-    <CModalBody class="video-modal__container">
-      <!-- Video Section -->
+  <Dialog v-model:visible="visible"  pt:root:class="video-modal" >
+    <template #header></template>
+    <div class="modal-video__container">
       <div class="modal-video">
         <video :src="draftData.playbackUrl" controls></video>
       </div>
       <!-- Info Section -->
       <div class="modal-info">
         <div class="p-field">
-        <label for="comment">Comment:</label>
-        <textarea v-model="comment" id="comment" rows="3" cols="30"></textarea>
+          <label for="comment">Comment:</label>
+          <textarea v-model="comment" id="comment" rows="3" cols="30"></textarea>
+        </div>
+        <div>
+          <Button label="Approve" @click="approveVideo" class="p-button-success" />
+          <Button label="Reject" @click="rejectVideo" class="p-button-danger" />
+        </div>
       </div>
-      <div>
-        <Button label="Approve" @click="approveVideo" class="p-button-success" />
-        <Button label="Reject" @click="rejectVideo" class="p-button-danger" />
-      </div>
-      </div>
-    </CModalBody>
-    <CModalFooter>
-      <CButton color="secondary" @click="closeModal">Close</CButton>
-    </CModalFooter>
-  </CModal>
+    </div>
+    <template #footer>
+        <Button label="Cancel" class="btn btn-primary"   @click="visible = false" autofocus />
+        <Button label="Save" class="btn btn-primary"  @click="visible = false" autofocus />
+    </template>
+  </Dialog>
 
 </template>
 
 <script setup>
   import { ref } from 'vue';
-  import { CModal, CModalHeader, CModalTitle, CModalBody, CModalFooter, CButton } from '@coreui/vue';
+  import Button from 'primevue/Button';
+  import Dialog from 'primevue/Dialog';
 
-  const modalVisible = ref(false);
+  const visible = ref(false);
   const comment = ref('');
 
   const props = defineProps({
@@ -52,29 +49,13 @@
   });
 
   // Open the modal
-  
-  function openModal() {
-    modalVisible.value = true;
-  }
-
-  function closeModal() {
-    modalVisible.value = false;
-
-  }
-
-
-
   // Handle approval
   const approveVideo = () => {
-    console.log('Video approved');
-    console.log('Comment:', comment.value);
     modalVisible.value = false;
   };
 
   // Handle rejection
   const rejectVideo = () => {
-    console.log('Video rejected');
-    console.log('Comment:', comment.value);
     modalVisible.value = false;
   };
 
@@ -104,7 +85,7 @@
 </script>
 
 <style scoped>
-  .video-card {
-    cursor: pointer;
+  .modal-video__container {
+
   }
 </style>

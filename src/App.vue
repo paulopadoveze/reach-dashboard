@@ -6,7 +6,6 @@
   </header>
   <div class="container">
     <header class="campaign__header">
-
       <div class="brand__header">
         <img src="/mockdata/sponsor-thumb.png" class="brand__image">
         <div class="brand__info">
@@ -16,6 +15,7 @@
       </div>
 
       <div class="header-stats">
+        
         <div class="header-stats__controls">
 
           <Button type="button" :class="'header-stats__control'"  @click="toggle">
@@ -26,6 +26,7 @@
               </svg>
             </template>
           </Button>
+
           <Menu ref="menu" :popup="true" class="menu-popover">
             <template #start>
               <h6 class="heading-6">Toggle financial info</h6>
@@ -49,35 +50,31 @@
               </label>
             </template>
           </Menu>
-          
+
         </div>
-        
+
         <div class="card-stat current-cpm" v-if="isCurrentCPMEnabled">
           <h5 class="heading-6 card-stat__title">Current CPM</h5>
-          <p class="heading-4 card-stat__value">$2.52</p>
-
-          <p class="cpm__projected-value">Projected: <strong>$3.12</strong></p>
-         
+          <p class="heading-4 card-stat__value">${{financialSituation.cpm.value}}</p>
+          <p class="cpm__projected-value">Projected: <strong>${{financialSituation.cpm.projected}}</strong></p>
         </div>
 
         <div class="card-stat budget" v-if="isBudgetEnabled">
           <h5 class="heading-6 card-stat__title">Budget</h5>
-          <p class="heading-4 card-stat__value">$150,000.00</p>
-
+          <p class="heading-4 card-stat__value">${{formatNumber(financialSituation.budget.value)}}</p>
           <div class="budget__progress">
             <ul class="budget-values">
               <li class="budget-values__item">
-                Spent: $55,000.00
+                Spent: ${{formatNumber(financialSituation.budget.spent)}}
               </li>
               <li class="budget-values__item">
-                Remaining : $94,450.00
+                Remaining: ${{formatNumber(financialSituation.budget.value - financialSituation.budget.spent)}}
               </li>
             </ul>
              <div class="progress">
-              <div class="progress__bar" style="width: 37%;"><span class="progress__value" >37%</span></div>
+              <div class="progress__bar" :style="'width: ' +calculateProgress(financialSituation.budget.spent, financialSituation.budget.value) + '%'"><span class="progress__value" >{{calculateProgress(financialSituation.budget.spent, financialSituation.budget.value)}}%</span></div>
             </div>
           </div>
-
         </div>
 
       </div>
@@ -86,19 +83,19 @@
   </div>
   <div class="container">
       
-  <nav class="main-nav">
-    <ul>
-      <li><a class="main-nav__link" href="">Overview</a></li>
-      <li><a class="main-nav__link" href="">Pending reviews</a></li>
-      <li><a class="main-nav__link" href="">Delivered posts</a></li>
-      <li><a class="main-nav__link" href="">Creators</a></li>
-    </ul>
-  </nav>
+    <nav class="main-nav">
+      <ul>
+        <li><a class="main-nav__link" href="">Overview</a></li>
+        <li><a class="main-nav__link" href="">Pending reviews</a></li>
+        <li><a class="main-nav__link" href="">Delivered posts</a></li>
+        <li><a class="main-nav__link" href="">Creators</a></li>
+      </ul>
+    </nav>
 
-  <Overview />
-  <PendingReviewsList />
-  <DeliveredPosts />
-  <CreatorList />
+    <Overview />
+    <PendingReviewsList />
+    <DeliveredPosts />
+    <CreatorList />
 
   </div>
 
@@ -119,7 +116,6 @@
   import PendingReviewsList from "./components/PendingReviews/PendingReviewsList.vue";
   import DeliveredPosts from "./components/Delivered/DeliveredPosts.vue";
 
-
   // Reactive References
   const totalStats = ref(null);
   const dropdownMenu = ref(false);
@@ -130,6 +126,7 @@
   const store = useStore();
   const isBudgetEnabled = computed(() => store.getters.isBudgetEnabled);
   const isCurrentCPMEnabled = computed(() => store.getters.isCurrentCPMEnabled);
+  const financialSituation = computed(() => store.getters.financialSituation);
 
   // Methods
   const updateIsBudgetEnabled = (event) => {
@@ -146,6 +143,10 @@
     }
   };
 
+  const calculateProgress = (current, total) => {
+    return Math.floor(parseInt(current)/parseInt(total)*100);
+  }
+
   const calculateTotalStats = (data) => {
     return data.reduce((acc, item) => {
       const stats = item.tiktokPost.stats;
@@ -157,9 +158,13 @@
     }, { viewCount: 0, likeCount: 0, commentCount: 0, shareCount: 0 });
   };
 
-  const formatNumber = (num) => {
-    return new Intl.NumberFormat('en-US').format(num);
+   const formatNumber = (num) => {
+    return new Intl.NumberFormat('en-US', {
+      minimumFractionDigits: 2,
+      maximumFractionDigits: 2,
+    }).format(num);
   };
+
 
   // Ripple Effect
   const vRipple = Ripple;

@@ -4,6 +4,16 @@ const store = createStore({
   state: {
     isBudgetEnabled: true,
     isCurrentCPMEnabled: true,
+    financialSituation: {
+      cpm: {
+        value: '2.53',
+        projected: '4.15'
+      },
+      budget: {
+        value: 450000.00,
+        spent: 153212.00
+      }
+    },
     deliveredPosts: [
         {
           "tiktokPost": {
@@ -731,6 +741,7 @@ const store = createStore({
     },
   },
   getters: {
+    financialSituation: state => state.financialSituation,
     isBudgetEnabled: state => state.isBudgetEnabled,
     isCurrentCPMEnabled: state => state.isCurrentCPMEnabled,
     deliveredPosts: state => state.deliveredPosts,

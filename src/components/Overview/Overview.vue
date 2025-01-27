@@ -159,12 +159,12 @@
 
         data.push({
           x: date.toLocaleString('en-US', {
-          month: 'short', // Abbreviated month (e.g., Feb)
-          day: '2-digit', // Two-digit day
-          year: 'numeric', // Full year
-          hour: '2-digit', // Two-digit hour
-          minute: '2-digit', // Two-digit minutes
-          hour12: true, // 12-hour clock format
+          month: 'short', 
+          day: '2-digit',
+          year: 'numeric', 
+          hour: '2-digit',
+          minute: '2-digit', 
+          hour12: true, 
         }), // Format the date as YYYY-MM-DD
           y: value,
         });
